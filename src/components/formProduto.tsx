@@ -28,8 +28,16 @@ export default function FormularioProduto() {
     <div
       style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
     >
-      <h3 className="mt-3">Inserir Novo Produto</h3>
-      <form onSubmit={handleSubmit}>
+    <p>
+      <button className="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+        Cadastrar um novo Produto
+      </button>
+    </p>
+
+    <div style = {{ minHeight: "20px" }}>
+      <div className="collapse collapse-horizontal" id="collapseWidthExample">
+        <div className="card card-body" style = {{width: "500px"}}>
+        <form onSubmit={handleSubmit}>
         <div className="row mb-3">
           <label className="col-sm-3 col-form-lable">Nome</label>
           <div className="col-md-8">
@@ -73,11 +81,15 @@ export default function FormularioProduto() {
           <label className="col-sm-3 col-form-lable"></label>
           <div className="col-md-1">
             <button type="submit" className="btn btn-primary bnt-lg">
-              Submit
+              Cadastrar
             </button>
           </div>
         </div>
       </form>
+        </div>
+        <br/>
+      </div>
+    </div>
     </div>
   );
 }

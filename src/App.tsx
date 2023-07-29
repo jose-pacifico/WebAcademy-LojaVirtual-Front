@@ -1,4 +1,3 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import "react-bootstrap";
 import FormularioProduto from "./components/formProduto";
 import { useEffect } from "react";
@@ -8,6 +7,7 @@ import { fetchProdutos } from "./redux/slices/api.slice.produtos";
 import ProdutosList from "./components/listProdutos";
 import "./index.css";
 import NavBarCustom from "./components/navbar";
+import GridCardProduto from "./components/gridCardProduto";
 
 function App() {
   const { isAdmin } = useSelector((state: RootState) => state.apiLogin);
@@ -36,9 +36,10 @@ function App() {
             </div>
           ) : null}
 
-          <div style={{ overflow: "scroll", height: "400px" }}>
+          {isAdmin ? (
             <ProdutosList />
-          </div>
+          ) : <GridCardProduto />}
+
         </div>
       )}
     </div>

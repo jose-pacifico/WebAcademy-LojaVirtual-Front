@@ -8,6 +8,9 @@ import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./pages/Login";
 import Carrinho from "./pages/carrinho";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

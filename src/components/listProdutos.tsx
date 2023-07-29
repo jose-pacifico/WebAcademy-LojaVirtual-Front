@@ -2,8 +2,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { Button } from "reactstrap";
-import { addProdutoNome } from "../redux/slices/carrinho.slice";
+import { addProduto, rmProduto } from "../redux/slices/carrinho.slice";
+import { increment } from "../redux/slices/count.slice";
 import { RootState } from "../redux/store";
+import { Produto } from "../redux/slices/api.slice.produtos";
 
 export default function ProdutosList() {
   const dispatch = useDispatch();
@@ -11,8 +13,9 @@ export default function ProdutosList() {
   const { produtos } = useSelector((state: RootState) => state.apiProduto);
   const { isAdmin } = useSelector((state: RootState) => state.apiLogin);
 
-  function inserirCarrinho(name: string) {
-    dispatch(addProdutoNome(name));
+  function inserirCarrinho(produto: Produto) {
+    dispatch(addProduto(produto));
+    dispatch(increment());
   }
   
   return (
@@ -34,17 +37,17 @@ export default function ProdutosList() {
               <td>{produto.nome}</td>
               <td>R$ {produto.preco}</td>
               <td>{produto.estoque}</td>
-              <td>
                 {isAdmin ? null : (
+                  <td>
                   <Button
                     onClick={() => {
-                      inserirCarrinho(produto.nome);
+                      inserirCarrinho(produto);
                     }}
                   >
                     Inserir no Carrinho
                   </Button>
-                )}
               </td>
+                )}
             </tr>
           );
         })}

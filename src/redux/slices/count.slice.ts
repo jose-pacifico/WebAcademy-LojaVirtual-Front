@@ -10,8 +10,14 @@ export const countSlice = createSlice({
     increment(state) {
       state.value += 1;
     },
+    decrement(state) {
+      state.value -= 1;
+    },
+    decrementAll(state, action) {
+      state.value -= action.payload;
+    },
   },
 });
 
-export const { increment } = countSlice.actions;
+export const { increment, decrement, decrementAll } = countSlice.actions;
 export default countSlice.reducer;
